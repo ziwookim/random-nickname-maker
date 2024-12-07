@@ -1,4 +1,4 @@
-# random-nickname-maker 랜덤 닉네임 생성기
+# random-nickname-maker (랜덤 닉네임 생성기)
 
 
 - 프로젝트 개요
