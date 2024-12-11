@@ -37,10 +37,10 @@ public class WordService {
                 Word word = new Word(partOfSpeech, wordContent);
 //                words.add(word);
 
-                if(!allWordsMap.containsKey(PartOfSpeech.valueOf(partOfSpeech))) {
-                    allWordsMap.put(PartOfSpeech.valueOf(partOfSpeech), new ArrayList<>());
+                if(!wordsMap.containsKey(PartOfSpeech.valueOf(partOfSpeech))) {
+                    wordsMap.put(PartOfSpeech.valueOf(partOfSpeech), new ArrayList<>());
                 }
-                allWordsMap.get(PartOfSpeech.valueOf(partOfSpeech)).add(word);
+                wordsMap.get(PartOfSpeech.valueOf(partOfSpeech)).add(word);
 
             }
         } catch (IOException e) {
@@ -50,22 +50,22 @@ public class WordService {
     }
 
     public int getMaxLength(PartOfSpeech partOfSpeech) {
-        return allWordsMap.get(partOfSpeech).stream()
+        return wordsMap.get(partOfSpeech).stream()
                 .mapToInt(Word::getLength)
                 .max()
                 .orElse(0);
     }
 
     public int getMinLength(PartOfSpeech partOfSpeech) {
-        return allWordsMap.get(partOfSpeech).stream()
+        return wordsMap.get(partOfSpeech).stream()
                 .mapToInt(Word::getLength)
                 .min()
                 .orElse(0);
     }
 
     public List<Word> getWordsShorterThan(PartOfSpeech partOfSpeech, int maxLength) {
-        return allWordsMap.get(partOfSpeech).stream()
-                .filter(word -> word.getLength() < maxLength)
+        return wordsMap.get(partOfSpeech).stream()
+                .filter(word -> word.getLength() <= maxLength)
                 .collect(Collectors.toList());
     }
 }
