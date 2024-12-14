@@ -1,9 +1,9 @@
 jdk:
-  - 21.0.2-amzn
+  - azul-17.0.8
 
 before_install:
-  - sdk install java 21.0.2-amzn
-  - sdk use java 21.0.2-amzn
+  - sdk install azul-17.0.8
+  - sdk use java azul-17.0.8
   - sdk install maven
   - mvn -v
 
