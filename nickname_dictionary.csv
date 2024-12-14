@@ -6,7 +6,7 @@ adjective,밝은
 adjective,좋은
 adjective,행복한
 adjective,맛있는
-adjective,기쁨을주는
+adjective,기쁨을 주는
 adjective,친절한
 adjective,사랑스러운
 adjective,상쾌한
@@ -228,6 +228,7 @@ noun,미생물
 noun,마음대로
 noun,민들레
 noun,매운맛
+noun,마르지 않음
 noun,메모리
 noun,미세먼지
 noun,멋
@@ -246,6 +247,7 @@ noun,별
 noun,보물
 noun,보살핌
 noun,부엌
+noun,부족
 noun,브랜드
 noun,방울
 noun,배움
@@ -270,6 +272,7 @@ noun,번역
 noun,볼링
 noun,방안
 noun,비트
+noun,밝혀짐
 noun,반찬
 noun,볶음밥
 noun,분석
@@ -394,7 +397,7 @@ noun,진달래
 noun,진주
 noun,자원봉사
 noun,졸업
-noun,조명
+noun,조명이
 noun,정색
 noun,정신
 noun,줌
