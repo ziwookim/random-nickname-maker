@@ -1,11 +1,11 @@
 jdk:
   - azul-17.0.8
-
-before_install:
-  - sdk install azul-17.0.8
-  - sdk use java azul-17.0.8
-  - sdk install maven
-  - mvn -v
-
-install:
-  - ./gradlew build --stacktrace publishToMavenLocal
+#
+#before_install:
+#  - sdk install azul-17.0.8
+#  - sdk use java azul-17.0.8
+#  - sdk install maven
+#  - mvn -v
+#
+#install:
+#  - ./gradlew build --stacktrace publishToMavenLocal
