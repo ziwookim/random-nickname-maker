@@ -66,7 +66,7 @@ class RandomNickNameMakerTest {
         IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> {
             RandomNickNameMaker.builder()
                     .numberOfPhrase(NumberOfPhrase.PHRASE_3)
-                    .maxLength(3)
+                    .maxLength(2)
                     .isIncludedBlank(false)
                     .callNickNameMaker();
         });
