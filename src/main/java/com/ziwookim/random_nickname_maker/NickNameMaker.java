@@ -2,7 +2,6 @@ package com.ziwookim.random_nickname_maker;
 
 import com.ziwookim.random_nickname_maker.service.WordService;
 import lombok.AccessLevel;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -10,8 +9,6 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
-import java.util.stream.Collectors;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
@@ -42,8 +39,6 @@ public class NickNameMaker {
     public String callNickNameMaker(NumberOfPhrase numberOfPhrase, boolean isIncludeBlank, int maxLength) {
         if(maxLength == -1) maxLength = Integer.MAX_VALUE;
 
-        System.out.println("maxLength: " +  maxLength);
-
         setNickNameCandidateList(numberOfPhrase, maxLength);
 
         if(nickNameCandidateList.isEmpty()) {
@@ -55,7 +50,6 @@ public class NickNameMaker {
         if(!isIncludeBlank) {
             nickName = nickName.replace(" ", "");
         }
-        System.out.println(nickName);
 
         return nickName;
     }
@@ -66,7 +60,8 @@ public class NickNameMaker {
 
     private void setNickNameCandidateList(NumberOfPhrase numberOfPhrase, int maxLength) {
         switch (numberOfPhrase) {
-            case NumberOfPhrase.PHRASE_2:
+            case NumberOfPhrase
+                    .PHRASE_2:
                 if(maxLength < ADJECTIVE_MIN_LENGTH + NOUN_MIN_LENGTH) return;
 
                 for (Word adjective : wordsMap.get(PartOfSpeech.ADJECTIVE)) {

@@ -1,9 +1,9 @@
 jdk:
-  - azul-17.0.8
-#
+  - 21.0.2-amzn
+
 #before_install:
-#  - sdk install azul-17.0.8
-#  - sdk use java azul-17.0.8
+#  - sdk install java 17.0.9-zulu
+#  - sdk use java 17.0.9-zulu
 #  - sdk install maven
 #  - mvn -v
 #

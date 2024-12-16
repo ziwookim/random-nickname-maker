@@ -45,7 +45,7 @@ public class WordService {
             }
             csvReader.close();
         } catch (CsvValidationException | IOException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("닉네임 리스트 파일을 읽어오는 도중 문제가 발생했습니다.");
         }
 
         return wordsMap;
