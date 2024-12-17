@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'com.ziwookim'
-version = '1.0.1'
+version = '1.0.2'
 
 java {
 	toolchain {
@@ -34,13 +34,21 @@ dependencies {
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
-tasks.named('test') {
-	useJUnitPlatform()
+dependencyManagement {
+	imports {
+		mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
+	}
 }
 
-bootJar {
-	enabled = false
+publishing {
+	publications {
+		mavenJava(MavenPublication){
+			// jar is the default build task configured by Spring Boot if bootJar=false
+			artifact jar
+		}
+	}
 }
-jar {
-	enabled = true
+
+tasks.named('test') {
+	useJUnitPlatform()
 }
