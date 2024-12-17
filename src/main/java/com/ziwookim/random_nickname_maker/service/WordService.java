@@ -20,6 +20,7 @@ import java.util.Map;
 public class WordService {
 
     private final Map<PartOfSpeech, List<Word>> wordsMap = new HashMap<>();
+    private final Map<PartOfSpeech, Map<Integer, List<String>>> lengthWordsMap = new HashMap<>();
 
     public Map<PartOfSpeech, List<Word>> loadWords() {
 //        Arrays.stream(PartOfSpeech.values()).forEach(partOfSpeech -> wordsMap.put(partOfSpeech, new ArrayList<>()));

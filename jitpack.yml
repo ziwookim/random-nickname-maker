@@ -18,5 +18,7 @@ before_install:
   - sdk install maven
   - mvn -v
 
-build:
-  script: ./gradlew clean build
+install:
+  - ./gradlew build --stacktrace publishToMavenLocal
+#build:
+#  script: ./gradlew clean build
