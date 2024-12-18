@@ -1,8 +1,5 @@
 package com.ziwookim.random_nickname_maker;
 
-import lombok.RequiredArgsConstructor;
-
-@RequiredArgsConstructor
 public enum NumberOfPhrase {
 
     PHRASE_1(1),
@@ -11,4 +8,12 @@ public enum NumberOfPhrase {
     ;
 
     private final Integer numberOfPhrase;
+
+    NumberOfPhrase(Integer numberOfPhrase) {
+        this.numberOfPhrase = numberOfPhrase;
+    }
+
+    public Integer getNumberOfPhrase() {
+        return numberOfPhrase;
+    }
 }

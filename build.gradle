@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'com.ziwookim'
-version = '1.0.6'
+version = '1.0.7'
 
 java {
 	toolchain {
@@ -28,27 +28,25 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	// https://mvnrepository.com/artifact/com.opencsv/opencsv
 	implementation 'com.opencsv:opencsv:5.9'
-	compileOnly 'org.projectlombok:lombok'
-	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
-
-dependencyManagement {
-	imports {
-		mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
-	}
-}
-
-publishing {
-	publications {
-		mavenJava(MavenPublication){
-			// jar is the default build task configured by Spring Boot if bootJar=false
-			artifact jar
-		}
-	}
-}
-
+//
+//dependencyManagement {
+//	imports {
+//		mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
+//	}
+//}
+//
+//publishing {
+//	publications {
+//		mavenJava(MavenPublication){
+//			// jar is the default build task configured by Spring Boot if bootJar=false
+//			artifact jar
+//		}
+//	}
+//}
+//
 tasks.named('test') {
 	useJUnitPlatform()
 }
@@ -60,3 +58,32 @@ jar {
 	enabled = true
 }
 
+
+subprojects {
+	apply plugin: 'java'
+
+	group = 'com.ziwookim'
+	version = '1.0.7'
+
+	java {
+		toolchain {
+			languageVersion.set(JavaLanguageVersion.of(21))
+		}
+	}
+
+	repositories {
+		mavenCentral()
+	}
+
+	dependencies {
+		implementation 'org.springframework.boot:spring-boot-starter-web'
+		// https://mvnrepository.com/artifact/com.opencsv/opencsv
+		implementation 'com.opencsv:opencsv:5.9'
+		testImplementation 'org.springframework.boot:spring-boot-starter-test'
+		testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	}
+
+	tasks.withType(Test) {
+		useJUnitPlatform()
+	}
+}
