@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'com.ziwookim'
-version = '1.0.10'
+version = '1.0.11'
 
 java {
 	toolchain {
@@ -38,14 +38,28 @@ dependencies {
 //	}
 //}
 //
-//publishing {
+publishing {
 //	publications {
 //		mavenJava(MavenPublication){
 //			// jar is the default build task configured by Spring Boot if bootJar=false
 //			artifact jar
 //		}
 //	}
-//}
+	publications {
+		mavenJava(MavenPublication) {
+			from components.java  // This will publish the default Java component
+			groupId = 'com.ziwookim'
+			artifactId = 'random-nickname-maker'
+			version = '1.0.11'
+		}
+	}
+	repositories {
+		maven {
+			// Specify where to publish
+			url = uri("$buildDir/repo") // Or replace with a valid Maven repository URL
+		}
+	}
+}
 //
 tasks.named('test') {
 	useJUnitPlatform()
