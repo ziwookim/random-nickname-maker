@@ -21,4 +21,9 @@ before_install:
 #install:
 #  - ./gradlew build --stacktrace publishToMavenLocal
 build:
-  script: ./gradlew clean build
+  commands:
+    - ./gradlew clean build
+
+publishing:
+  artifacts:
+  - build/libs/*.jar
