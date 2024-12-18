@@ -1,6 +1,5 @@
 package com.ziwookim.random_nickname_maker;
 
-import jakarta.servlet.http.Part;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Map;

@@ -7,13 +7,19 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RandomNickNameMakerTest {
 
+
+    @DisplayName("랜덤 닉네임 생성2 테스트")
+    @Test
+    void 랜덤_닉네임_생성2() {
+
+        assertNotEquals(RandomNickNameMaker.builder().callAdvancedNickNameMaker(), RandomNickNameMaker.builder().callAdvancedNickNameMaker());
+    }
+
     @DisplayName("랜덤 닉네임 생성 테스트")
     @Test
     void 랜덤_닉네임_생성() {
 
-        assertNotEquals(RandomNickNameMaker.builder()
-                .callNickNameMaker(), RandomNickNameMaker.builder()
-                .callNickNameMaker());
+        assertNotEquals(RandomNickNameMaker.builder().callNickNameMaker(), RandomNickNameMaker.builder().callNickNameMaker());
     }
 
     @DisplayName("닉네임 생성 길이 제한 테스트")
