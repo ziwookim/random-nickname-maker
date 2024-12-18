@@ -11,14 +11,14 @@
 #  - ./gradlew build --stacktrace publishToMavenLocal
 jdk:
   - 21.0.2-amzn
-#
-#before_install:
-#  - sdk install java 21.0.2-amzn
-#  - sdk use java 21.0.2-amzn
-#  - sdk install maven
-#  - mvn -v
+
+before_install:
+  - sdk install java 21.0.2-amzn
+  - sdk use java 21.0.2-amzn
+  - sdk install maven
+  - mvn -v
 #
 #install:
 #  - ./gradlew build --stacktrace publishToMavenLocal
-#build:
-#  script: ./gradlew clean build
+build:
+  script: ./gradlew clean build
