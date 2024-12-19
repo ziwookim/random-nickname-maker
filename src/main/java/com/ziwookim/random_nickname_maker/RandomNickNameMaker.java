@@ -16,7 +16,7 @@ public class RandomNickNameMaker {
         return new RandomNickNameMaker();
     }
 
-    public RandomNickNameMaker maxLength(int  maxLength) {
+    public RandomNickNameMaker maxLength(int maxLength) {
         this.maxLength = maxLength;
         return this;
     }
@@ -33,5 +33,9 @@ public class RandomNickNameMaker {
 
     public String callNickNameMaker() {
         return new NickNameMaker().callNickNameMaker(this.numberOfPhrase, this.isIncludedBlank, this.maxLength);
+    }
+
+    public String callAdvancedNickNameMaker() {
+        return new NickNameMaker().callAdvancedNickNameMaker(this.numberOfPhrase, this.isIncludedBlank, this.maxLength);
     }
 }
