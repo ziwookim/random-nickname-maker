@@ -41,7 +41,7 @@ dependencies {
 
 ## 🗺️ 사용 방법
 
-### 1. 프로젝트 내 ["/.nickname_dictionary.csv"]([nickname_dictionary.csv](https://prod-files-secure.s3.us-west-2.amazonaws.com/66fe14c5-e3ed-4f06-b0ef-d16353703ce7/2594a773-0d6c-4657-a7d3-e0a049f7afea/nickname_dictionary.csv)) 파일 양식으로 작성된 단어 사전 파일을 저장합니다.
+### 1. 프로젝트 내 ["/.nickname_dictionary.csv"](https://prod-files-secure.s3.us-west-2.amazonaws.com/66fe14c5-e3ed-4f06-b0ef-d16353703ce7/2594a773-0d6c-4657-a7d3-e0a049f7afea/nickname_dictionary.csv) 파일 양식으로 작성된 단어 사전 파일을 저장합니다.
   | partOfSpeech | Word |
   | --- | --- |
   | adverb | 밝게 |
