@@ -1,19 +1,12 @@
 package com.ziwookim.random_nickname_maker;
 
 import com.ziwookim.random_nickname_maker.service.WordService;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Getter
-@Slf4j
 public class NickNameMaker {
 
     private final Map<PartOfSpeech, List<Word>> wordsMap = new WordService().loadWords();
@@ -37,9 +30,10 @@ public class NickNameMaker {
             .orElse(0);
 
     private final SecureRandom secureRandom = new SecureRandom();
+  
+    NickNameMaker() {}
 
-    public String callNickNameMaker(NumberOfPhrase numberOfPhrase, boolean isIncludeBlank, int maxLength) {
-        log.info("numberOfPhrase: {}, isIncludeBlank: {}, maxLength: {}", numberOfPhrase.ordinal(), isIncludeBlank, maxLength);
+    String callNickNameMaker(NumberOfPhrase numberOfPhrase, boolean isIncludeBlank, int maxLength) {
         if(maxLength == -1) maxLength = Integer.MAX_VALUE;
 
         setNickNameCandidateList(numberOfPhrase, maxLength);

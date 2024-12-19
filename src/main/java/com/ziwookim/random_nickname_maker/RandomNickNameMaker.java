@@ -1,11 +1,5 @@
 package com.ziwookim.random_nickname_maker;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
-@Getter
 public class RandomNickNameMaker {
 
     private final boolean DEFAULT_IS_INCLUDE_BLANK = true;
@@ -15,6 +9,8 @@ public class RandomNickNameMaker {
     private boolean isIncludedBlank = DEFAULT_IS_INCLUDE_BLANK;
     private NumberOfPhrase numberOfPhrase = DEFAULT_NUMBER_OF_PHRASE;
     private Integer maxLength = DEFAULT_MAX_LENGTH;
+
+    private RandomNickNameMaker() {}
 
     public static RandomNickNameMaker builder() {
         return new RandomNickNameMaker();

@@ -4,8 +4,6 @@ import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 import com.ziwookim.random_nickname_maker.PartOfSpeech;
 import com.ziwookim.random_nickname_maker.Word;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.FileReader;
@@ -15,14 +13,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Slf4j
-@Service
 public class WordService {
 
     private final Map<PartOfSpeech, List<Word>> wordsMap = new HashMap<>();
     private final Map<PartOfSpeech, Map<Integer, List<String>>> lengthWordsMap = new HashMap<>();
 
     public Map<PartOfSpeech, List<Word>> loadWords() {
+
         File file = new File("./nickname_dictionary.csv").getAbsoluteFile();
 
         CSVReader csvReader = null;

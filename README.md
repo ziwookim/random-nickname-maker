@@ -1,23 +1,87 @@
-# random-nickname-maker (랜덤 닉네임 생성기)
+# 🎲 random-nickname-maker (랜덤 닉네임 생성기)
 
 
-- 프로젝트 개요
-    - 생성할 닉네임에 대한 선택 조건 부여가 가능하도록 한다.
-       1. 닉네임 생성 단어 조합을 선택할 수 있도록 한다. (예) 선택 안함, 명사, 형용사+명사, 부사+형용사+명사 등)
-       2. 글자수 N자 이내 등의 추가 조건
-       3. 닉네임 내 공백 문자의 포함 여부 등
-    - 무해한 단어들만 리스트업한다.
-    - Advanced. 지정한 닉네임 생성 조건으로 생성 가능한 닉네임 개수를 먼저 확인할 수 있도록 한다.
+## 🌟 기능 개요
+게임이나 각종 커뮤니티 내에서 부여되는 랜덤 닉네임을 생성하는 오픈 소스 입니다.
 
-    
-- [ ] 설치 방법 / 사용 방법
-    - [ ] 가능하다면 동영상이나 animated gif 첨부
-- [x] 라이선스 표기
-- [ ] 기능 구현
-    - [ ] 여기에 구현할 기능을 입력합니다.
-- [x] 테스트 추가 (라인 커버리지 60% 이상)
-- [ ] 사용 예제 프로젝트 추가 (examples 폴더 아래에 2개 이상)
-- [ ] 라이브러리 퍼블리싱
-- [ ] CI 설정
-    - [ ] PR에 등록되었을 때 테스트 실행
-    - [ ] main 프로젝트에 머지되었을 때 라이브러리 퍼블리싱
+---
+
+## 🧭 설치 방법
+
+<b>Gradle</b>
+````groovy
+repositories {
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation 'com.github.ziwookim:random-nickname-maker:1.0.13'
+}
+````
+
+###
+<b>Maven</b>
+````xml
+<repositories>
+    <repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+
+<dependency>
+    <groupId>com.github.ziwookim</groupId>
+    <artifactId>random-nickname-maker</artifactId>
+    <version>1.0.13</version>
+</dependency>
+````
+
+###
+
+## 🗺️ 사용 방법
+
+### 1. 프로젝트 내 ["/.nickname_dictionary.csv"](https://docs.google.com/uc?export=download&id=1TerL12wuyX3H2wLeaZOR3XXvpspXi1KX) 파일 양식으로 작성된 단어 사전 파일을 저장합니다.
+  | partOfSpeech | Word |
+  | --- | --- |
+  | adverb | 밝게 |
+  | adjective | 평화로운 |
+  | noun | 감자 |
+
+🧩 <b>품사(partOfSpeech)</b>와 <b>단어(word)</b>로 구성된 양식에 따라 닉네임에 사용될 단어 리스트를 변경할 수 있습니다.
+
+### 2.  익명 닉네임 설정 값 지정
+- **RandomNickNameMaker.builder()**
+  - .numberOfPhrase: 닉네임에 생성에 사용될 어구 개수 지정 최소 1개 ~ 3개 지정 가능.
+    - `NumberOfPhrase.PHRASE_1`
+    - `NumberOfPhrase.PHRASE_2` (default)
+    - `NumberOfPhrase.PHRASE_3`
+
+  - .maxLength: 최대 글자 수 지정 (단, 공백 문자를 제외한 최대 글자 수를 뜻하며, 지정한 글자수 이하의 닉네임 생성 불가시 예외 발생)
+    - default: `-1` (제한 없음)
+  - .isIncludedBlank: 공백 문자 포함 여부
+    - default: `true` (공백 값 포함)
+- **.callNickNameMaker();**
+  
+###
+
+## 🧪 샘플 코드
+```java
+    /* 디폴트 설정 값으로 익명 닉네임 생성 */
+
+    String defaultNickName = RandomNickNameMaker.builder()
+            .callNickNameMaker();
+
+    System.out.println(defaultNickName);
+        
+````
+````java
+        /* 설정 값 지정하여 익명 닉네임 생성 */
+        String nickName = RandomNickNameMaker.builder()
+                .numberOfPhrase(NumberOfPhrase.PHRASE_3)
+                .maxLength(10)
+                .isIncludedBlank(true)
+                .callNickNameMaker();
+
+        System.out.println(nickName);
+````
