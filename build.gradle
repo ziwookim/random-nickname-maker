@@ -1,103 +1,41 @@
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '3.4.0'
-	id 'io.spring.dependency-management' version '1.1.6'
 	id 'maven-publish'
+}
+java{
+	sourceCompatibility = JavaVersion.VERSION_21
+	targetCompatibility = JavaVersion.VERSION_21
 }
 
 group = 'com.github.ziwookim'
-version = '1.0.12'
-
-java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(21)
-	}
-}
-
-configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
-}
+version = '1.0.13'
 
 repositories {
 	mavenCentral()
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web'
+//	implementation 'org.springframework.boot:spring-boot-starter-web'
 	// https://mvnrepository.com/artifact/com.opencsv/opencsv
 	implementation 'com.opencsv:opencsv:5.9'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	testImplementation platform('org.junit:junit-bom:5.9.1')
+	testImplementation 'org.junit.jupiter:junit-jupiter'
 }
-//
-//dependencyManagement {
-//	imports {
-//		mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
-//	}
-//}
-//
+
+test {
+	useJUnitPlatform()
+}
+
 publishing {
-//	publications {
-//		mavenJava(MavenPublication){
-//			// jar is the default build task configured by Spring Boot if bootJar=false
-//			artifact jar
-//		}
-//	}
 	publications {
 		mavenJava(MavenPublication) {
-			from components.java  // This will publish the default Java component
-			groupId = 'com.github.ziwookim'
-			artifactId = 'random-nickname-maker'
-			version = '1.0.12'
+			from components.java
 		}
 	}
 	repositories {
 		maven {
-			// Specify where to publish
-			url = uri("$buildDir/repo") // Or replace with a valid Maven repository URL
+			name = "JitPack"
+			url = uri("https://jitpack.io")
 		}
-	}
-}
-//
-tasks.named('test') {
-	useJUnitPlatform()
-}
-
-bootJar {
-	enabled = false
-}
-jar {
-	enabled = true
-}
-
-
-subprojects {
-	apply plugin: 'java'
-
-	group = 'com.ziwookim'
-	version = '1.0.10'
-
-	java {
-		toolchain {
-			languageVersion.set(JavaLanguageVersion.of(21))
-		}
-	}
-
-	repositories {
-		mavenCentral()
-	}
-
-	dependencies {
-		implementation 'org.springframework.boot:spring-boot-starter-web'
-		// https://mvnrepository.com/artifact/com.opencsv/opencsv
-		implementation 'com.opencsv:opencsv:5.9'
-		testImplementation 'org.springframework.boot:spring-boot-starter-test'
-		testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-	}
-
-	tasks.withType(Test) {
-		useJUnitPlatform()
 	}
 }
