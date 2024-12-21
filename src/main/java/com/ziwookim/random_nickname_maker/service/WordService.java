@@ -15,10 +15,28 @@ import java.util.Map;
 
 public class WordService {
 
-    private final Map<PartOfSpeech, List<Word>> wordsMap = new HashMap<>();
-    private final Map<PartOfSpeech, Map<Integer, List<String>>> lengthWordsMap = new HashMap<>();
+    private final static Map<PartOfSpeech, List<Word>> wordsMap = new HashMap<>();
+    private final static Map<PartOfSpeech, Map<Integer, List<String>>> lengthWordsMap = new HashMap<>();
 
-    public Map<PartOfSpeech, List<Word>> loadWords() {
+    private WordService() {
+    }
+
+    private static final class InstanceHolder {
+        private static final WordService instance = new WordService();
+    }
+
+    public static WordService getInstance() {
+        if(wordsMap.isEmpty()) {
+            InstanceHolder.instance.loadWords();
+        }
+        return InstanceHolder.instance;
+    }
+
+    public Map<PartOfSpeech, List<Word>> getWordsMap() {
+        return wordsMap;
+    }
+
+    private void loadWords() {
 
         File file = new File("./nickname_dictionary.csv").getAbsoluteFile();
 
@@ -44,6 +62,5 @@ public class WordService {
             throw new RuntimeException("닉네임 리스트 파일을 읽어오는 도중 문제가 발생했습니다.");
         }
 
-        return wordsMap;
     }
 }

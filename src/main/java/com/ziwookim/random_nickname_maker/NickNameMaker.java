@@ -9,7 +9,9 @@ import java.util.Map;
 
 public class NickNameMaker {
 
-    private final Map<PartOfSpeech, List<Word>> wordsMap = new WordService().loadWords();
+    private final WordService wordService = WordService.getInstance();
+
+    private final Map<PartOfSpeech, List<Word>> wordsMap = wordService.getWordsMap();
 
     private final List<String> nickNameCandidateList = new ArrayList<>();
 
